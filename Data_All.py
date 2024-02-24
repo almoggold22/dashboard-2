@@ -73,6 +73,7 @@ pie_chart_translation_out = px.pie(date_translation_out, title='Translation Out'
 with col6:
     pie6 = st.write(pie_chart_translation_out)
 
+col7, col8 = st.columns((2))
 ##'Entire Flow' columns
 entire_flow_all = conn.read(spreadsheet=url, worksheet='1664217404', usecols=list(range(64, 72)), ttl=5)
 size_entire_flow = entire_flow_all.groupby('Entire flow buttons1').size()
@@ -80,8 +81,17 @@ date_entire_flow = conn.read(spreadsheet=url, worksheet='1664217404', usecols=li
 pie_chart_entire_flow = px.pie(date_entire_flow, title='Entire Flow', values=size_entire_flow, names=size_entire_flow.index, height = 400, width= 350, hole=.4)
 #fig_entire_flow = pie_chart_entire_flow.update_layout(legend=dict(orientation="h"))
 
-col7, col8 = st.columns((2))
 with col7:
     pie7 = st.write(pie_chart_entire_flow)
+
+##'Score' columns
+score_all = conn.read(spreadsheet=url, worksheet='1664217404', usecols=list(range(73, 75)), ttl=5)
+size_score = score_all.groupby('Score buttons1').size()
+date_score = conn.read(spreadsheet=url, worksheet='1664217404', usecols=list(range(73)), ttl=5)
+pie_chart_score = px.pie(date_score, title='Entire Flow', values=size_score, names=size_score.index, height = 400, width= 350, hole=.4)
+#fig_entire_flow = pie_chart_entire_flow.update_layout(legend=dict(orientation="h"))
+
+with col8:
+    pie8 = st.write(pie_chart_score)
 
 st.divider()
