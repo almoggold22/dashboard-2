@@ -4,14 +4,13 @@ import pandas as pd
 import plotly.express as px
 
 st.set_page_config(
-    page_title="Hello",
-    page_icon= ":bar_chart:"
-)
+    page_title="Hello")
+
 st.sidebar.success("Select a Page above")
 
 #Compare Page:
 #Display Title and Despcription
-st.title(":grey[Feedbacks] :green[Dashboard]")
+st.title(":grey[Feedbacks Dashboard] :violet[Dis]")
 st.markdown("**Compare**")
 
 #Establishing a Google Sheets connection
@@ -92,16 +91,23 @@ col_model1, col_model2 = st.columns((2))
 existing_data_left = conn.read(spreadsheet=url, worksheet='1763036692', usecols=list(range(9, 72)), ttl=5)
 size_left = left_range.groupby(buttons_col_of_each_model_left[index_finder_left(models_dates_col_left)]).size()
 pie_chart_left = px.pie(left_range, title=model_type_left, values=size_left, names=size_left.index, height = 500, width= 550)
-
+df_left_dis = pd.DataFrame(size_left)
 
 #'intents' columns - right side
 existing_data_right = conn.read(spreadsheet=url, worksheet='1763036692', usecols=list(range(9, 72)), ttl=5)
 size_right = right_range.groupby(buttons_col_of_each_model_right[index_finder_right(models_dates_col_right)]).size()
 pie_chart_right = px.pie(right_range, title=model_type_right, values=size_right, names=size_right.index, height = 500, width= 550)
+df_right_dis = pd.DataFrame(size_right)
 
 with col_model1:
     st.plotly_chart(pie_chart_left)
 with col_model2:
     st.plotly_chart(pie_chart_right)
+
+dfcol1, dfcol2 = st.columns((2))
+with dfcol1:
+    dfcol_left = st.dataframe(df_left_dis, width=340)
+with dfcol2:
+    dfcol_right = st.dataframe(df_right_dis, width=340)
 
 st.divider()
