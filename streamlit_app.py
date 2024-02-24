@@ -104,29 +104,4 @@ with col_model1:
 with col_model2:
     st.plotly_chart(pie_chart_right)
 
-
-
-
-
-###Relevant for second page
-###'Closest questions (embedding)' columns
-#existing_data_embedding = conn.read(spreadsheet=url, worksheet='1763036692', usecols=list(range(27, 35)), ttl=5)
-#size_embedding = existing_data_embedding.groupby('Closest questions (embedding) buttons1').size()
-
-###'Contextual answer (AI21)' columns
-#existing_data_ai21 = conn.read(spreadsheet=url, worksheet='1763036692', usecols=list(range(36, 44)), ttl=5)
-#size_ai21 = existing_data_ai21.groupby('Contextual answer (AI21) buttons1').size()
-
-###'Rephrase' columns
-#existing_data_rephrase = conn.read(spreadsheet=url, worksheet='1763036692', usecols=list(range(45, 53)), ttl=5)
-#size_rephrase = existing_data_rephrase.groupby('Rephrase buttons1').size()
-
-###'Translation Out' columns
-#existing_data_translation_out = conn.read(spreadsheet=url, worksheet='1763036692', usecols=list(range(54, 62)), ttl=5)
-#size_translation_out = existing_data_translation_out.groupby('Translation out buttons1').size()
-
-###'Entire Flow' columns
-#existing_data_entire_flow = conn.read(spreadsheet=url, worksheet='1763036692', usecols=list(range(63, 71)), ttl=5)
-#size_entire_flow = existing_data_entire_flow.groupby('Entire flow buttons1').size()
-
 st.divider()
