@@ -4,7 +4,7 @@ import pandas as pd
 import plotly.express as px
 
 st.set_page_config(
-    page_title="Hello")
+    page_title="Feedbacks Dashboard")
 
 st.sidebar.success("Select a Page above")
 
@@ -42,13 +42,13 @@ with col_model_right:
 #Dates Range
 if model_type_left:
     left_chart[model_type_left] = pd.to_datetime(left_chart[model_type_left])
-    today1 = conn.read(spreadsheet=url, worksheet='1082314658', usecols=list(range(9)), ttl=5)
+    today1 = conn.read(spreadsheet=url, worksheet='1710462852', usecols=list(range(1)), ttl=5)
     start_date_1 = pd.to_datetime(left_chart[model_type_left]).min()
     end_date_1 = pd.to_datetime(today1['today']).max()
     #----
 if col_model_right:
     right_chart[model_type_right] = pd.to_datetime(right_chart[model_type_right])
-    today2 = conn.read(spreadsheet=url, worksheet='1082314658', usecols=list(range(9)), ttl=5)
+    today2 = conn.read(spreadsheet=url, worksheet='1710462852', usecols=list(range(1)), ttl=5)
     start_date_2 = pd.to_datetime(right_chart[model_type_right]).min()
     end_date_2 = pd.to_datetime(today2['today']).max()
 
@@ -90,13 +90,13 @@ col_model1, col_model2 = st.columns((2))
 #'translation in' columns - left side
 existing_data_left = conn.read(spreadsheet=url, worksheet='1763036692', usecols=list(range(9, 72)), ttl=5)
 size_left = left_range.groupby(buttons_col_of_each_model_left[index_finder_left(models_dates_col_left)]).size()
-pie_chart_left = px.pie(left_range, title=model_type_left, values=size_left, names=size_left.index, height = 500, width= 550)
+pie_chart_left = px.pie(left_range, title=model_type_left, values=size_left, names=size_left.index, height = 500, width= 550, hole=.4)
 df_left_dis = pd.DataFrame(size_left)
 
 #'intents' columns - right side
 existing_data_right = conn.read(spreadsheet=url, worksheet='1763036692', usecols=list(range(9, 72)), ttl=5)
 size_right = right_range.groupby(buttons_col_of_each_model_right[index_finder_right(models_dates_col_right)]).size()
-pie_chart_right = px.pie(right_range, title=model_type_right, values=size_right, names=size_right.index, height = 500, width= 550)
+pie_chart_right = px.pie(right_range, title=model_type_right, values=size_right, names=size_right.index, height = 500, width= 550, hole=.4)
 df_right_dis = pd.DataFrame(size_right)
 
 with col_model1:
