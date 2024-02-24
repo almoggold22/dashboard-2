@@ -88,7 +88,7 @@ with col7:
 score_all = conn.read(spreadsheet=url, worksheet='1664217404', usecols=list(range(73, 75)), ttl=5)
 size_score = score_all.groupby('Score buttons1').size()
 date_score = conn.read(spreadsheet=url, worksheet='1664217404', usecols=list(range(73)), ttl=5)
-pie_chart_score = px.pie(date_score, title='Entire Flow', values=size_score, names=size_score.index, height = 400, width= 350, hole=.4)
+pie_chart_score = px.pie(date_score, title='Score', values=size_score, names=size_score.index, height = 400, width= 350, hole=.4)
 #fig_entire_flow = pie_chart_entire_flow.update_layout(legend=dict(orientation="h"))
 
 with col8:
