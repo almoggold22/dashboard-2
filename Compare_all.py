@@ -20,8 +20,8 @@ url = 'https://docs.google.com/spreadsheets/d/1kSeOTYs4XPxA2Rqb3Jz5tezwjllUmbRfB
 #---API Part Up To Here----------------------------------------------------------------------------------------------------------------------------------------
 
 #-1-Set Connection with gsheets page:
-left_chart = conn.read(spreadsheet=url, worksheet='1664217404', usecols=list(range(9, 72)), ttl=5)
-right_chart = conn.read(spreadsheet=url, worksheet='1664217404', usecols=list(range(9, 72)), ttl=5)
+left_chart = conn.read(spreadsheet=url, worksheet='1664217404', usecols=list(range(9, 75)), ttl=5)
+right_chart = conn.read(spreadsheet=url, worksheet='1664217404', usecols=list(range(9, 75)), ttl=5)
 
 #left - list of date's columns names and chosen buttons:
 models_dates_col_left = ['Translation in date', 'Intents date', 'Embedding date', 'AI21 date', 'Rephrase date', 'Translation out date', 'Entire flow date', 'Score date']
@@ -88,14 +88,14 @@ def index_finder_right(models_dates_col_right):
 col_model1, col_model2 = st.columns((2))
 #---2---Pie-Charts--
 #'translation in' columns - left side
-existing_data_left = conn.read(spreadsheet=url, worksheet='1664217404', usecols=list(range(9, 72)), ttl=5)
+existing_data_left = conn.read(spreadsheet=url, worksheet='1664217404', usecols=list(range(9, 75)), ttl=5)
 size_left = left_range.groupby(buttons_col_of_each_model_left[index_finder_left(models_dates_col_left)]).size()
 pie_chart_left = px.pie(left_range, title=model_type_left, values=size_left, names=size_left.index, height = 500, width= 550, hole=.4)
 df_left_all = pd.DataFrame(size_left)
 
 
 #'intents' columns - right side
-existing_data_right = conn.read(spreadsheet=url, worksheet='1664217404', usecols=list(range(9, 72)), ttl=5)
+existing_data_right = conn.read(spreadsheet=url, worksheet='1664217404', usecols=list(range(9, 75)), ttl=5)
 size_right = right_range.groupby(buttons_col_of_each_model_right[index_finder_right(models_dates_col_right)]).size()
 pie_chart_right = px.pie(right_range, title=model_type_right, values=size_right, names=size_right.index, height = 500, width= 550, hole=.4)
 df_right_all = pd.DataFrame(size_right)
