@@ -28,11 +28,11 @@ left_chart_dis = conn.read(spreadsheet=url, worksheet='1763036692', usecols=list
 right_chart_all = conn.read(spreadsheet=url, worksheet='1664217404', usecols=list(range(9, 75)), ttl=5)
 
 #left - list of date's columns names and chosen buttons:
-models_dates_col_left_dis = ['Translation in date', 'Intents date', 'Embedding date', 'AI21 date', 'Rephrase date', 'Translation out date', 'Entire flow date', 'Score date']
+models_dates_col_left_dis = ['Translation in', 'Intents', 'Embedding', 'AI21', 'Rephrase', 'Translation out', 'Entire flow', 'Score date']
 buttons_col_of_each_model_left_dis = ['Translation in buttons1', 'Intents buttons1', 'Closest questions (embedding) buttons1', 'Contextual answer (AI21) buttons1', 'Rephrase buttons1', 'Translation out buttons1', 'Entire flow buttons1', 'Score buttons1']
 
 #right - list of date's columns names and chosen buttons:
-models_dates_col_right_all = ['Translation in date', 'Intents date', 'Embedding date', 'AI21 date', 'Rephrase date', 'Translation out date', 'Entire flow date', 'Score date']
+models_dates_col_right_all = ['Translation in', 'Intents', 'Embedding', 'AI21', 'Rephrase', 'Translation out', 'Entire flow', 'Score']
 buttons_col_of_each_model_right_all = ['Translation in buttons1', 'Intents buttons1', 'Closest questions (embedding) buttons1', 'Contextual answer (AI21) buttons1', 'Rephrase buttons1', 'Translation out buttons1', 'Entire flow buttons1', 'Score buttons1']
 
 #create right and left columns on streamlit for choosing model:
