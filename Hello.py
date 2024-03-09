@@ -3,7 +3,7 @@ from streamlit_gsheets import GSheetsConnection
 import pandas as pd
 import plotly.express as px
 
-st.title(":grey[All Models -] :violet[Dis]")
+st.title(":grey[All Models -] :violet[Dislike]")
 
 #Establishing a Google Sheets connection
 conn = st.connection("gsheets", type=GSheetsConnection)
