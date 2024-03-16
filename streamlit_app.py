@@ -19,11 +19,11 @@ url = 'https://docs.google.com/spreadsheets/d/1kSeOTYs4XPxA2Rqb3Jz5tezwjllUmbRfB
 
 #Compare Page:
 #Display Title and Despcription
-page_col_1, page_col_2, page_col_3, page_col_4, page_col_5, page_col_6, page_col_7, page_col_8, page_col_9, page_col_10 = st.columns(10)
+page_col_1, page_col_2, page_col_3, page_col_4, page_col_5, page_col_6, page_col_7, page_col_8, page_col_9 = st.columns(9)
 with page_col_1:
     on = st.toggle(":blue[**Dislike**]")
 if on: #on = Dislike
-    with page_col_10:
+    with page_col_9:
         st.link_button("'Dislike' Sheet",'https://docs.google.com/spreadsheets/d/1kSeOTYs4XPxA2Rqb3Jz5tezwjllUmbRfBO1csTILHvE/edit#gid=1763036692')
     st.title(":grey[Feedbacks Dashboard] - :blue[Dislike]")
     st.markdown('**Data - Tool - Dis**')
@@ -108,7 +108,7 @@ if on: #on = Dislike
 else: #on = All
     #Compare Page:
     #Display Title and Despcription
-    with page_col_10:
+    with page_col_9:
         st.link_button("'All' Sheet",'https://docs.google.com/spreadsheets/d/1kSeOTYs4XPxA2Rqb3Jz5tezwjllUmbRfBO1csTILHvE/edit#gid=1664217404')
     st.title(":grey[Feedbacks Dashboard] - :violet[All]")
     st.markdown('**Data - Tool - All**')
