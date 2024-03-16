@@ -5,10 +5,10 @@ import plotly.express as px
 import plotly.graph_objects as go
 import plotly.figure_factory as ff
 
-page_col_above1, page_col_above2, page_col_above3, page_col_above4, page_col_above5, page_col_above6, page_col_above7, page_col_above8, page_col_above9, page_col_above10 = st.columns(10)
-with page_col_above10:
-    st.link_button("'All' Sheet",'https://docs.google.com/spreadsheets/d/1kSeOTYs4XPxA2Rqb3Jz5tezwjllUmbRfBO1csTILHvE/edit#gid=1664217404')
+page_col_above1, page_col_above2, page_col_above3, page_col_above4, page_col_above5, page_col_above6, page_col_above7, page_col_above8, page_col_above9 = st.columns(9)
 with page_col_above9:
+    st.link_button("'All' Sheet",'https://docs.google.com/spreadsheets/d/1kSeOTYs4XPxA2Rqb3Jz5tezwjllUmbRfBO1csTILHvE/edit#gid=1664217404')
+with page_col_above8:
     st.link_button("'Dislike' Sheet",'https://docs.google.com/spreadsheets/d/1kSeOTYs4XPxA2Rqb3Jz5tezwjllUmbRfBO1csTILHvE/edit#gid=1763036692')
 
 #Compare Page:
