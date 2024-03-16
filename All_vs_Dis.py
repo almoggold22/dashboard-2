@@ -2,6 +2,8 @@ import streamlit as st
 from streamlit_gsheets import GSheetsConnection
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
+import plotly.figure_factory as ff
 
 page_col_above1, page_col_above2, page_col_above3, page_col_above4, page_col_above5, page_col_above6, page_col_above7, page_col_above8, page_col_above9, page_col_above10 = st.columns(10)
 with page_col_above10:
@@ -92,7 +94,7 @@ def index_finder_right_all(models_dates_col_right_all):
             return name_of_buttons_col_right
 
 #columns for pie charts
-col_model_dis1, col_model_all2 = st.columns((2))
+col_model1, col_model2, col_model3, col_model4, col_model5, col_model6, col_model7, col_model8, col_model9, col_model10, col_model11, col_model12, col_model13, col_model14, col_model15, col_model16, col_model17, col_model18 = st.columns((18))
 #---2---Pie-Charts--
 #'translation in' columns - left side
 existing_data_left_dis = conn.read(spreadsheet=url, worksheet='1763036692', usecols=list(range(9, 75)), ttl=5)
@@ -107,15 +109,48 @@ size_right_all = right_range_all.groupby(buttons_col_of_each_model_right_all[ind
 pie_chart_right_all = px.pie(right_range_all, title=model_type_right_all, values=size_right_all, names=size_right_all.index, height = 500, width= 550, hole=.4)
 df_right_all = pd.DataFrame(size_right_all)
 
-with col_model_dis1:
+with col_model2:
     st.plotly_chart(pie_chart_left_dis)
-with col_model_all2:
+with col_model11:
     st.plotly_chart(pie_chart_right_all)
 
-dfcolall1, dfcolall2 = st.columns((2))
-with dfcolall1:
-    dfcol_left = st.dataframe(df_left_all, width=340)
-with dfcolall2:
-    dfcol_right = st.dataframe(df_right_all, width=340)
+#dfcolall1, dfcolall2 = st.columns((2))
+#with dfcolall1:
+#    dfcol_left = st.dataframe(df_left_all, width=340)
+#with dfcolall2:
+#    dfcol_right = st.dataframe(df_right_all, width=340)
+
+st.divider()
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#new plot
+empty_list_for_table_data = ['']
+table_data = [empty_list_for_table_data]
+#df = pd.DataFrame(dict(name = [size_left.index], num = [size_left]))
+fig_1 = ff.create_table(table_data)
+
+trace1 = go.Bar(x=size_left_dis.index, y=size_left_dis, xaxis='x2', yaxis='y2',
+                marker=dict(color='#0099ff'),
+                name='Dislike',
+                showlegend=True,
+                text=size_left_dis)
+trace2 = go.Bar(x=size_right_all.index, y=size_right_all, xaxis='x2', yaxis='y2',
+                marker=dict(color='#404040'),
+                name='All',
+                showlegend=True,
+                text=size_right_all)
+
+fig_1.add_traces([trace1, trace2])
+
+fig_1.layout.margin.update({'t':75, 'l':50})
+fig_1.layout.update({'title': 'All vs Dislike'})
+fig_1.layout.update({'height':500})
+fig_1.layout.update(({'width':1100}))
+
+
+fig_col1, fig_col2, fig_col3, fig_col4, fig_col5, fig_col6, fig_col7, fig_col8, fig_col9 = st.columns((9))
+
+with fig_col2:
+    fig_col2_show = st.write(fig_1)
 
 st.divider()
